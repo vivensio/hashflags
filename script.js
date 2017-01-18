@@ -64,6 +64,7 @@ function hideLoader() {
         }, index);
     });
     
+    setContainerHeight();
     addRemoveClass('footer', 'add', 'is-visible');
 }
 
@@ -163,6 +164,18 @@ function resetSugg(val) {
     addRemoveClass('suggestions', 'remove', 'is-visible');
 }
 
+function setContainerHeight () {
+    var top = document.querySelector('.top-container').offsetHeight;
+    var bottom = document.querySelector('.bottom-container').offsetHeight;
+    var screenHeight = window.innerHeight;
+    addRemoveClass('footer', 'remove', 'is-fixed');
+
+    if (bottom < screenHeight - top) {
+        document.querySelector('.bottom-container').style.height = (screenHeight - top) + 'px';
+        addRemoveClass('footer', 'add', 'is-fixed');
+    }
+}
+
 
 Details = function () {}
 Details.prototype = {
@@ -195,12 +208,14 @@ Details.prototype = {
         addRemoveClass('hashflags-container', 'add', 'shrunk');
         addRemoveClass('top-container', 'add', 'shrunk');
         addRemoveClass('close-details', 'add', 'is-visible');
+        addRemoveClass('footer', 'remove', 'is-visible');
     },
     hideDetails: function () {
         addRemoveClass('details-container', 'remove', 'is-visible');
         addRemoveClass('hashflags-container', 'remove', 'shrunk');
         addRemoveClass('top-container', 'remove', 'shrunk');
         addRemoveClass('close-details', 'remove', 'is-visible');
+        addRemoveClass('footer', 'add', 'is-visible');
     },
     renderSiblings: function (siblings, url, clickedSugg) {
         for (var prop in hashflags.ordered[url]) {

@@ -252,14 +252,13 @@ body {
 }
 
 .footer {
-    text-align: center;
     color: #225ea8;;
     font-family: Verdana;
 	font-size: 12px;
 	margin-top: 3%;
 	width: 100%;
 	opacity: 0;
-	transition: opacity 250ms linear 1000ms;
+	transition: opacity 250ms linear;
 }
 .footer.is-visible {
 	opacity: 1;
@@ -338,6 +337,7 @@ body {
 		font-size: 15px;
 	}
 	.footer {
+		text-align: center;
 		color: #fff;
 		padding: 4% 0;
 		font-size: 15px;
@@ -389,7 +389,7 @@ body {
 		overflow-y: auto;
 		overflow-x: hidden;
 		transition: all 350ms ease-in-out 200ms;
-		background: linear-gradient(#e2e2e2, #ffffff);
+		background: linear-gradient(#e2e2e2, #e1e1e1);
 		padding-top: 2%;
 	}
 	.details-container.is-visible {
@@ -425,5 +425,10 @@ body {
 	}
 	.input-wrap,.hint-input, .search-input {
 		width: 400px;
+	}
+	.footer.is-fixed {
+		position: absolute;
+		bottom: 0;
+		padding-bottom: 15px;
 	}
 }
