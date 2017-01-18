@@ -78,7 +78,7 @@ var hashflags = {
 };
 
 function getHashflags() {
-    var queryUrl = "http://query.yahooapis.com/v1/public/yql?q=select * from html where url='http://twitter.com/twitter'&format=json&diagnosis=true";
+    var queryUrl = (document.location.protocol === "https:" ? "https" : "http") + "://query.yahooapis.com/v1/public/yql?q=select * from html where url='http://twitter.com/twitter'&format=json&diagnosis=true";
     getJSON(queryUrl, function (data) {
         var tw = JSON.parse(data.query.results.body.input[0].value);
         hashflags.baseUrl = tw.hashflagBaseUrl;
